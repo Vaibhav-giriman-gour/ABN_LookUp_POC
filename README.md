@@ -16,7 +16,7 @@ Inspired by platforms like **ZoomInfo**, **Lusha**, and **Apollo.io**.
 
 ## Demo
 
-![Application Demo](frontend/public/ABN_LookUp_POC.gif)  *A brief demonstration of the application's search, filtering, pagination, and detail view functionality.*
+![Application Demo](frontend/public/ABN_LookUP_POC.gif)  *A brief demonstration of the application's search, filtering, pagination, and detail view functionality.*
 
 ## 🛠️ Tech Stack
 
