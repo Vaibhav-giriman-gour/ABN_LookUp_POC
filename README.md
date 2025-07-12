@@ -17,21 +17,40 @@ Inspired by platforms like **ZoomInfo**, **Lusha**, and **Apollo.io**.
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Node.js**, **Express.js**
-- **PostgreSQL** + `pg` (PostgreSQL client)
-- Structured logging via **Winston**
--  **`dotenv`** for environment configuration
+![Node.js](https://img.shields.io/badge/Node.js-v18-green)
+
+![Express.js](https://img.shields.io/badge/Express.js-Backend-black)
+
+![**PostgreSQL** + `pg` (PostgreSQL client)](https://img.shields.io/badge/PostgreSQL-Relational%20DB-blue)
+
+![Winston](https://img.shields.io/badge/Winston-Logger-informational)
+
+**`dotenv`** for environment configuration
+## Sameple .env
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=username
+DB_PASS=password
+DB_NAME=abn_lookup
+```
+
 
 ### Frontend
-- **React.js**
-- **Redux Toolkit** (for predictable state management)
-- **Tailwind CSS v4** (for rapid and efficient styling)
-- **React Router** (for client-side navigation)
-- **Axios** (for API communication)
+![React.js](https://img.shields.io/badge/React-v18.2-blue)
+
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-State%20Management-purple)
+
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Utility--First_CSS-0ea5e9)
+
+![React Router](https://img.shields.io/badge/React%20Router-Routing-red)
+
+![Axios](https://img.shields.io/badge/Axios-HTTP%20Client-ffb703)
 
 ### ETL (Ingestion Layer)
-- Node.js XML streaming with `sax`
-- CSV generation with `csv-stringify`
+![SAX](https://img.shields.io/badge/SAX-Streaming%20XML%20Parser-brightgreen) Node.js XML streaming with `sax`
+
+![CSV](https://img.shields.io/badge/CSV-Intermediate%20Format-lightgrey) CSV generation with `csv-stringify` 
 
 
 ---
