@@ -1,0 +1,8 @@
+/* src/index.css */
+@import "tailwindcss"; /* This is the ONLY Tailwind import needed for v4 */
+/* ... rest of your CSS */
+
+/* Optional: Basic global styles for better font rendering */
+html, body {
+  @apply antialiased subpixel-antialiased;
+}
