@@ -14,6 +14,10 @@ Inspired by platforms like **ZoomInfo**, **Lusha**, and **Apollo.io**.
 
 ---
 
+## Demo
+
+![Application Demo](frontend/public/my_abn_demo.gif)  *A brief demonstration of the application's search, filtering, pagination, and detail view functionality.*
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -39,7 +43,6 @@ DB_PASS=password
 DB_NAME=abn_lookup
 ```
 
-
 ### Frontend
 <p>
   <img src="https://img.shields.io/badge/React-blue?style=for-the-badge&logo=react&logoColor=white" alt="React.js"/>
@@ -60,8 +63,6 @@ DB_NAME=abn_lookup
    <img src="https://img.shields.io/badge/CSV-Intermediate%20Format-lightgrey?style=for-the-badge&logo=csv&logoColor=black" alt="CSV"/>
 </p>
  
-
-
 
 ---
 
