@@ -17,13 +17,17 @@ Inspired by platforms like **ZoomInfo**, **Lusha**, and **Apollo.io**.
 ## 🛠️ Tech Stack
 
 ### Backend
-![Node.js](https://img.shields.io/badge/Node.js-v18-green)
-
-![Express.js](https://img.shields.io/badge/Express.js-Backend-black)
-
-![**PostgreSQL** + `pg` (PostgreSQL client)](https://img.shields.io/badge/PostgreSQL-Relational%20DB-blue)
-
-![Winston](https://img.shields.io/badge/Winston-Logger-informational)
+<p>
+  <img src="https://img.shields.io/badge/Node.js-v18+-green?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js"/>
+   
+  <img src="https://img.shields.io/badge/Express.js-Backend-black?style=for-the-badge&logo=express&logoColor=white" alt="Express.js"/>
+  
+  <img src="https://img.shields.io/badge/PostgreSQL-Relational%20DB-blue?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  
+  <img src="https://img.shields.io/badge/Winston-Logger-informational?style=for-the-badge&logo=winston&logoColor=white" alt="Winston Logger"/>
+  
+  <img src="https://img.shields.io/badge/dotenv-Environment%20Config-success?style=for-the-badge&logo=dotenv&logoColor=white" alt="dotenv"/>
+</p>
 
 **`dotenv`** for environment configuration
 ## Sameple .env
@@ -37,20 +41,26 @@ DB_NAME=abn_lookup
 
 
 ### Frontend
-![React.js](https://img.shields.io/badge/React-v18.2-blue)
+<p>
+  <img src="https://img.shields.io/badge/React-blue?style=for-the-badge&logo=react&logoColor=white" alt="React.js"/>
+   
+  <img src="https://img.shields.io/badge/Redux%20Toolkit-State%20Management-purple?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Toolkit"/>
+  
+  <img src="https://img.shields.io/badge/Tailwind_CSS-Utility--First_CSS-0ea5e9?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+  
+  <img src="https://img.shields.io/badge/React%20Router-Routing-red?style=for-the-badge&logo=reactrouter&logoColor=white" alt="React Router"/>
+  
+  <img src="https://img.shields.io/badge/Axios-HTTP%20Client-ffb703?style=for-the-badge&logo=axios&logoColor=black" alt="Axios"/>
+</p>
 
-![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-State%20Management-purple)
-
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Utility--First_CSS-0ea5e9)
-
-![React Router](https://img.shields.io/badge/React%20Router-Routing-red)
-
-![Axios](https://img.shields.io/badge/Axios-HTTP%20Client-ffb703)
 
 ### ETL (Ingestion Layer)
-![SAX](https://img.shields.io/badge/SAX-Streaming%20XML%20Parser-brightgreen) Node.js XML streaming with `sax`
+<p>
+  <img src="https://img.shields.io/badge/SAX-Streaming%20XML%20Parser-brightgreen?style=for-the-badge" alt="SAX Parser"/>
+   <img src="https://img.shields.io/badge/CSV-Intermediate%20Format-lightgrey?style=for-the-badge&logo=csv&logoColor=black" alt="CSV"/>
+</p>
+ 
 
-![CSV](https://img.shields.io/badge/CSV-Intermediate%20Format-lightgrey) CSV generation with `csv-stringify` 
 
 
 ---
