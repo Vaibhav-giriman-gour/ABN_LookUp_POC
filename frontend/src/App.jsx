@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AbnSearchPage from './components/AbnSearchPage';
 import AbnDetailPage from './components/AbnDetailPage';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 
 function App() {
   return (
