@@ -2,7 +2,8 @@
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
-    "csv-stringify": "^6.5.2",
+    "csv-parse": "^6.0.0",
+    "csv-stringify": "^6.6.0",
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
     "pg": "^8.16.3",

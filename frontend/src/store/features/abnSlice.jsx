@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // --- Base URL
-const BASE_URL = 'http://localhost:5000/api/abns';
+const BASE_URL = 'https://abn-lookup-poc.onrender.com/api/abns';
 
 export const fetchAbns = createAsyncThunk(
     'abn/fetchAbns',
