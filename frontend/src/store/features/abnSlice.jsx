@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // --- Base URL
-const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+// Use Vite's native way to access environment variables
+const BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 
 // --- In-memory cache for ABN search results ---
 const abnQueryCache = {};
