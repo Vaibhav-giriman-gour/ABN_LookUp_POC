@@ -2,21 +2,42 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // --- Base URL
-const BASE_URL = 'https://abn-lookup-poc.onrender.com/api/abns';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+// --- In-memory cache for ABN search results ---
+const abnQueryCache = {};
+
+// --- Helper to generate a consistent cache key ---
+const generateCacheKey = (searchParams) => {
+    const sortedParams = Object.keys(searchParams)
+        .sort()
+        .map(key => [key, searchParams[key] || '']);
+    return JSON.stringify(sortedParams);
+};
 
 export const fetchAbns = createAsyncThunk(
     'abn/fetchAbns',
-    async (searchParams, { rejectWithValue }) => {
+    async (searchParams, { rejectWithValue, dispatch }) => {
         try {
-            // --- Build the query string
+            const cacheKey = generateCacheKey(searchParams);
+
+            // Check cache first
+            if (abnQueryCache[cacheKey]) {
+                return abnQueryCache[cacheKey]; // Cache hit
+            }
+
+            // Cache miss: Make API call
             const queryString = new URLSearchParams(searchParams).toString();
             const response = await axios.get(`${BASE_URL}?${queryString}`);
+
+            abnQueryCache[cacheKey] = response.data; // Store in cache
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data || error.message);
         }
     }
-)
+);
+
 export const fetchAbnDetails = createAsyncThunk(
     'abn/fetchAbnDetails',
     async (abn, { rejectWithValue }) => {
@@ -34,18 +55,18 @@ const abnSlice = createSlice(
         name: 'abn',
         initialState: {
             abns: [],
-            selectedAbn: null, // Details of a single selected ABN
+            selectedAbn: null,
             totalCount: 0,
             currentPage: 1,
-            limit: 10, // Default limit, matches backend
+            limit: 10,
             searchQuery: '',
-            filters: { // Stores current filter values
+            filters: {
                 state: '',
                 postcode: '',
                 entityType: '',
                 abnStatus: ''
             },
-            status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+            status: 'idle',
             error: null
         },
         reducers: {
@@ -62,7 +83,7 @@ const abnSlice = createSlice(
             setLimit: (state, action) => {
                 state.limit = action.payload;
             },
-            clearSearch(state) { // Reducer to reset search state
+            clearSearch(state) { // Reducer to reset search state and clear cache
                 state.abns = [];
                 state.selectedAbn = null;
                 state.totalCount = 0;
@@ -72,6 +93,17 @@ const abnSlice = createSlice(
                 state.filters = { state: '', postcode: '', entityType: '', abnStatus: '' };
                 state.status = 'idle';
                 state.error = null;
+                // Clear the actual in-memory cache
+                for (const key in abnQueryCache) {
+                    delete abnQueryCache[key];
+                }
+            },
+            // New action to explicitly clear cache
+            clearAbnQueryCache: (state) => {
+                for (const key in abnQueryCache) {
+                    delete abnQueryCache[key];
+                }
+                state.currentPage = 1; // When filters change, reset to page 1
             }
         },
         extraReducers: (builder) => {
@@ -90,31 +122,30 @@ const abnSlice = createSlice(
                 .addCase(fetchAbns.rejected, (state, action) => {
                     state.status = 'error';
                     state.error = action.payload || 'Failed to fetch ABNs';
-                    state.abns = []; // Clear results on failure
+                    state.abns = [];
                     state.totalCount = 0;
-                }
-                )
+                })
 
                 // --- FetchAbnDetails
                 .addCase(fetchAbnDetails.pending, (state) => {
                     state.status = 'loading';
                     state.error = null;
-                    state.selectedAbn = null; // Clear previous details
+                    state.selectedAbn = null;
                 })
                 .addCase(fetchAbnDetails.fulfilled, (state, action) => {
                     state.status = 'succeeded';
-                    state.selectedAbn = action.payload; z
+                    state.selectedAbn = action.payload;
                 })
-                .addCase(fetchAbnDetails.rejected, (state) => {
+                .addCase(fetchAbnDetails.rejected, (state, action) => {
                     state.status = 'failed';
                     state.error = action.payload || 'Failed to fetch ABN details';
                     state.selectedAbn = null;
-                })
+                });
         }
     }
-)
+);
 
-// --- EXPORT ACTIONS AND REDUCER 
-export const { setSearchQuery, setFilters, setCurrentPage, setLimit, clearSearch } = abnSlice.actions;
+// --- EXPORT ACTIONS AND REDUCER
+export const { setSearchQuery, setFilters, setCurrentPage, setLimit, clearSearch, clearAbnQueryCache } = abnSlice.actions;
 
 export default abnSlice.reducer;
